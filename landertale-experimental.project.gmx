@@ -35,7 +35,9 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scr_mainmenu.gml</script>
+    <scripts name="grp_scr_ui">
+      <script>scripts\scr_mainmenu.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\MainMenu_font</font>
@@ -43,7 +45,7 @@
     <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
-    <objects name="UIelements">
+    <objects name="grp_UIelements">
       <object>objects\button_exit</object>
       <object>objects\button_start</object>
       <object>objects\UI_desk</object>
@@ -52,7 +54,7 @@
       <object>objects\var_init</object>
       <object>objects\FlightUI_nav_1</object>
     </objects>
-    <objects name="PLBLobjects">
+    <objects name="grp_PLBLobjects">
       <object>objects\lander</object>
     </objects>
   </objects>
@@ -62,7 +64,9 @@
       <room>rooms\settings</room>
       <room>rooms\controls</room>
     </rooms>
-    <room>rooms\start</room>
+    <rooms name="grp_room_level">
+      <room>rooms\start</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
