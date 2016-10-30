@@ -33,14 +33,15 @@ thrust = 0
 shipeffects = part_system_create();
 part_system_depth(shipeffects,1);
 part_type_scale(shipeffects,1,1)
-part_type_size(shipeffects,2,1,0,0)
+part_type_size(shipeffects,1,5,2,0)
 part_type_color2(shipeffects, c_orange, c_ltgray)
 part_type_alpha(shipeffects, 0,0,0)
-part_type_speed(shipeffects,3,thrust*0.1,0,0)
-part_type_direction(shipeffects,dir*(-1),dir*(-1),0,0)
-part_type_gravity(shipeffects,0.2,270)
-part_type_life(shipeffects,0,5)
+part_type_speed(shipeffects,3,10.1,0,0)
+part_type_direction(shipeffects,image_angle,image_angle,image_angle,0)
+part_type_life(shipeffects,1,2)
 part_type_blend(shipeffects,0)
+shipengine_main = part_type_create();
+part_type_shape(shipengine_main, pt_shape_pixel);
 
 </string>
           </argument>
@@ -138,11 +139,9 @@ if (keyboard_check(vk_control))
    }
 motion_add (dir, thrust*0.01)
 //Рисуем пламя двигателя
-shipengine_main = part_type_create();
-part_type_shape(shipengine_main, pt_shape_pixel);
 shipengine_emit = part_emitter_create(shipeffects);
-part_emitter_region(shipeffects, shipengine_emit,lander.x-2,lander.x+2,lander.y+18,lander.y+18,ps_shape_ellipse,ps_distr_gaussian)
-part_emitter_stream(shipeffects, shipengine_emit, shipengine_main, thrust*0.1)
+part_emitter_region(shipeffects, shipengine_emit,lander.x+1,lander.x+1,lander.y,lander.y,ps_shape_ellipse,ps_distr_gaussian)
+part_emitter_burst(shipeffects, shipengine_emit, shipengine_main, thrust*0.5)
 </string>
           </argument>
         </arguments>
@@ -151,7 +150,7 @@ part_emitter_stream(shipeffects, shipengine_emit, shipengine_main, thrust*0.1)
   </events>
   <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
-  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectShape>2</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
@@ -161,7 +160,11 @@ part_emitter_stream(shipeffects, shipengine_emit, shipengine_main, thrust*0.1)
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>-1</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>22,22</point>
-    <point>28,28</point>
+    <point>26,4</point>
+    <point>38,12</point>
+    <point>44,44</point>
+    <point>4,44</point>
+    <point>8,20</point>
+    <point>10,10</point>
   </PhysicsShapePoints>
 </object>
