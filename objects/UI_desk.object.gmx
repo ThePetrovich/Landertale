@@ -69,6 +69,20 @@ orbit_speed  = 10;
       </action>
       <action>
         <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>524</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -176,6 +190,26 @@ orbit_speed  = 10;
           <argument>
             <kind>4</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>524</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_color</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>13</kind>
+            <string>16744448</string>
           </argument>
         </arguments>
       </action>
@@ -294,7 +328,7 @@ global.periapsiss = 100;
           </argument>
           <argument>
             <kind>0</kind>
-            <string>128</string>
+            <string>112</string>
           </argument>
         </arguments>
       </action>
@@ -319,6 +353,90 @@ draw_sprite (spr_ship_marker, -1, x+896 + orbit_radius * cos(orbit_angle * pi / 
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+fuelpc = (global.fuel/1000)*100
+if (fuelpc &lt;0) fuelpc = 0
+draw_healthbar(UI_desk.x+64,UI_desk.y+286,UI_desk.x+160,UI_desk.y+302,fuelpc,c_black,c_orange,c_orange,0,true,1)
+draw_sprite(spr_fuelicon,-1,UI_desk.x+16,UI_desk.y+278)
+draw_set_font(font1)
+draw_set_color(c_black)
+draw_set_valign(fa_top)
+draw_set_halign(fa_left)
+draw_text(UI_desk.x+176,UI_desk.y+280,string(fuelpc) + "%")
+if (fuelpc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+278)
+oxypc = (global.oxygen/500)*100
+draw_healthbar(UI_desk.x+64,UI_desk.y+318,UI_desk.x+160,UI_desk.y+334,oxypc,c_black,c_aqua,c_aqua,0,true,1)
+draw_text(UI_desk.x+176,UI_desk.y+312,string(oxypc) + "%")
+draw_sprite(spr_oxyicon,-1,UI_desk.x+16,UI_desk.y+310)
+if (oxypc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+310)
+
+elecpc = (global.electricity/100)*100
+draw_healthbar(UI_desk.x+64,UI_desk.y+350,UI_desk.x+160,UI_desk.y+366,elecpc,c_black,c_yellow,c_yellow,0,true,1)
+draw_text(UI_desk.x+176,UI_desk.y+344,string(elecpc) + "%")
+draw_sprite(spr_electicon,-1,UI_desk.x+16,UI_desk.y+342)
+if (elecpc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+342)
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
   </events>

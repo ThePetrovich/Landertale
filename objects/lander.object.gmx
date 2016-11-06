@@ -27,6 +27,10 @@
             <kind>1</kind>
             <string>//Задаём базовые переменные
 dir= 90
+global.fuel = 1000
+global.oxygen = 500
+global.electricity = 100
+global.sas = 1
 speed = 0
 thrust = 0
 //Создаём Part_system
@@ -42,6 +46,7 @@ part_type_life(shipeffects,1,2)
 part_type_blend(shipeffects,0)
 shipengine_main = part_type_create();
 part_type_shape(shipengine_main, pt_shape_pixel);
+rotation = 0
 
 </string>
           </argument>
@@ -63,7 +68,7 @@ part_type_shape(shipengine_main, pt_shape_pixel);
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>FlightUI_nav_1</object>
+            <object>UI_flighthud_nav</object>
           </argument>
           <argument>
             <kind>0</kind>
@@ -95,7 +100,7 @@ part_type_shape(shipengine_main, pt_shape_pixel);
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0.1</string>
+            <string>0.2</string>
           </argument>
         </arguments>
       </action>
@@ -117,15 +122,31 @@ part_type_shape(shipengine_main, pt_shape_pixel);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(ord('A')))
+            <string>if (keyboard_check(ord('A'))&amp;&amp; global.fuel &gt; 0 &amp;&amp; global.electricity &gt; 0)
    {
-    image_angle +=5
-    dir +=5
+   if (global.sas = 1)
+      {
+       rotation = 0
+       image_angle +=5
+       dir +=5
+       global.fuel -=0.02
+       global.electricity -=0.005
+      }
+      else
+      rotation +=0.5
    }
-if (keyboard_check(ord('D')))
+if (keyboard_check(ord('D')) &amp;&amp; global.fuel &gt; 0 &amp;&amp; global.electricity &gt;0)
    {
-    image_angle -=5
-    dir -=5
+   if (global.sas = 1) 
+      {
+       rotation = 0
+       image_angle -=5
+       dir -=5
+       global.fuel -=0.02
+       global.electricity -=0.005
+      }
+      else
+      rotation -=0.5
    }
 if (keyboard_check(vk_shift))
    {
@@ -137,12 +158,70 @@ if (keyboard_check(vk_control))
     thrust -=2
     if (thrust &lt;0) thrust = 0
    }
+if (keyboard_check(ord('Z')))
+   {
+    thrust = 50
+   }
+if (keyboard_check(ord('X')))
+   {
+    thrust = 0
+   }
+image_angle += rotation
+dir += rotation
 motion_add (dir, thrust*0.01)
+image_angle += rotation
+dir += rotation
+global.fuel -= 0.01*thrust
+global.oxygen -= 0.01
+global.electricity -=0.001
+if (global.fuel &lt; 0) thrust = 0
+if (global.oxygen &lt; 0) global.oxygen = 0
+if (global.electricity &lt; 0) global.electricity = 0
 //Рисуем пламя двигателя
 shipengine_emit = part_emitter_create(shipeffects);
 part_emitter_region(shipeffects, shipengine_emit,lander.x+1,lander.x+1,lander.y,lander.y,ps_shape_ellipse,ps_distr_gaussian)
 part_emitter_burst(shipeffects, shipengine_emit, shipengine_main, thrust*0.5)
+if (keyboard_check(ord('J')))
+   {
+      global.electricity -=1
+      global.oxygen -=2
+   }
+if (keyboard_check_released(ord('T')))
+    {
+     global.sas -= 1
+    }
+if (global.sas &lt; 0) global.sas = 1
+if (keyboard_check_released(ord('R')))
+    {
+     room_restart()
+    }
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_roomborder">
+      <action>
+        <libid>1</libid>
+        <id>115</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_bounce</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>1</string>
           </argument>
         </arguments>
       </action>
