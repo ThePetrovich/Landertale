@@ -28,9 +28,16 @@
             <string>//Задаём базовые переменные
 dir= 90
 global.fuel = 1000
+global.ls = 1
+global.lsco2 = 1
+clamp(global.fuel,0,1000)
 global.oxygen = 500
+clamp(global.oxygen,0,500)
 global.electricity = 100
+clamp(global.electricity,0,100)
 global.sas = 1
+global.gen = 0
+global.rcs = 1
 speed = 0
 thrust = 0
 //Создаём Part_system
@@ -48,6 +55,32 @@ shipengine_main = part_type_create();
 part_type_shape(shipengine_main, pt_shape_pixel);
 rotation = 0
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.sasfail = 0
+global.genfail = 1
+global.rcsfail = 0
+global.lsfail = 0
+global.lsco2fail = 0
+global.engfail = 0
 </string>
           </argument>
         </arguments>
@@ -123,31 +156,83 @@ rotation = 0
           <argument>
             <kind>1</kind>
             <string>if (keyboard_check(ord('A'))&amp;&amp; global.fuel &gt; 0 &amp;&amp; global.electricity &gt; 0)
-   {
+{
    if (global.sas = 1)
       {
-       rotation = 0
-       image_angle +=5
-       dir +=5
-       global.fuel -=0.02
-       global.electricity -=0.005
+       if (global.rcs = 1)
+          {
+           rotation = 0
+           image_angle +=5
+           dir +=5
+           global.fuel -=0.02
+           global.electricity -=0.005
+          }
+       else
+         {
+          if (global.sas = 0)
+             {
+              rotation = 0
+              image_angle +=3
+              dir +=3
+              global.electricity -=0.01
+             }
+          else {rotation +=0.3; global.electricity -=0.01}                      
+         }
       }
       else
-      rotation +=0.5
+       {
+        if (global.rcs = 1)
+           {
+            rotation +=0.5
+            global.fuel -=0.02
+            global.electricity -=0.005
+           }
+       else
+           {
+            rotation +=0.25
+            global.electricity -=0.01
+           }
    }
+}
 if (keyboard_check(ord('D')) &amp;&amp; global.fuel &gt; 0 &amp;&amp; global.electricity &gt;0)
-   {
+{
    if (global.sas = 1) 
       {
-       rotation = 0
-       image_angle -=5
-       dir -=5
-       global.fuel -=0.02
-       global.electricity -=0.005
+       if (global.rcs = 1)
+          {
+           rotation = 0
+           image_angle -=5
+           dir -=5
+           global.fuel -=0.02
+           global.electricity -=0.005
+          }
+       else
+           {
+            if (global.sas = 1)
+               {
+                rotation = 0
+                image_angle -=3
+                dir -=3
+                global.electricity -=0.01
+               }
+            else {rotation -=0.3; global.electricity -=0.01}
+           }
       }
-      else
-      rotation -=0.5
+   else
+       {
+        if (global.rcs = 1)
+           {
+            rotation -=0.5
+            global.fuel -=0.02
+            global.electricity -=0.005
+           }
+       else
+           {
+            rotation -=0.25
+            global.electricity -=0.01
+           }
    }
+}
 if (keyboard_check(vk_shift))
    {
     thrust +=2
@@ -181,20 +266,84 @@ if (global.electricity &lt; 0) global.electricity = 0
 shipengine_emit = part_emitter_create(shipeffects);
 part_emitter_region(shipeffects, shipengine_emit,lander.x+1,lander.x+1,lander.y,lander.y,ps_shape_ellipse,ps_distr_gaussian)
 part_emitter_burst(shipeffects, shipengine_emit, shipengine_main, thrust*0.5)
-if (keyboard_check(ord('J')))
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (keyboard_check(ord('J')))
    {
       global.electricity -=1
       global.oxygen -=2
+      global.genfail = 0
    }
-if (keyboard_check_released(ord('T')))
+if (keyboard_check_released(ord('T'))&amp;&amp; global.sasfail !=1)
     {
      global.sas -= 1
     }
 if (global.sas &lt; 0) global.sas = 1
-if (keyboard_check_released(ord('R')))
+if (keyboard_check_released(ord('L')))
     {
      room_restart()
     }
+if (keyboard_check_released(ord('R'))&amp;&amp; global.rcsfail !=1)
+    {
+     global.rcs -= 1
+    }
+if (global.rcs &lt; 0) global.rcs = 1
+if (keyboard_check_released(ord('E')))
+    {
+     global.gen -= 1
+    }
+if (global.gen &lt; 0) global.gen = 1
+if (global.gen = 1&amp;&amp; global.genfail !=1)
+   {
+    global.fuel -=0.05
+    global.electricity += 0.05
+   }
+   if (global.electricity &gt; 100) global.electricity = 100
+if (global.ls = 1) global.electricity -= 0.005
+if (global.electricity &lt;0) global.electricity = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.sasfail = 1)global.sas = 0
+if(global.genfail = 1)global.gen = 0
+if(global.rcsfail = 1)global.rcs = 0
+if(global.lsfail = 1)global.ls = 0
+if(global.lsco2fail = 1)global.lsco2 = 0
 </string>
           </argument>
         </arguments>

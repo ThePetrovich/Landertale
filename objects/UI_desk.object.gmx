@@ -398,26 +398,25 @@ draw_sprite (spr_ship_marker, -1, x+896 + orbit_radius * cos(orbit_angle * pi / 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-fuelpc = (global.fuel/1000)*100
+            <string>fuelpc = (global.fuel/1000)*100
 if (fuelpc &lt;0) fuelpc = 0
-draw_healthbar(UI_desk.x+64,UI_desk.y+286,UI_desk.x+160,UI_desk.y+302,fuelpc,c_black,c_orange,c_orange,0,true,1)
+draw_healthbar(UI_desk.x+64,UI_desk.y+286,UI_desk.x+144,UI_desk.y+302,round(fuelpc),c_black,make_color_rgb(255, 102, 0),make_color_rgb(255, 102, 0),0,true,0)
 draw_sprite(spr_fuelicon,-1,UI_desk.x+16,UI_desk.y+278)
 draw_set_font(font1)
-draw_set_color(c_black)
+draw_set_color(c_white)
 draw_set_valign(fa_top)
 draw_set_halign(fa_left)
-draw_text(UI_desk.x+176,UI_desk.y+280,string(fuelpc) + "%")
+draw_text(UI_desk.x+160,UI_desk.y+280,string(fuelpc) + "%")
 if (fuelpc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+278)
 oxypc = (global.oxygen/500)*100
-draw_healthbar(UI_desk.x+64,UI_desk.y+318,UI_desk.x+160,UI_desk.y+334,oxypc,c_black,c_aqua,c_aqua,0,true,1)
-draw_text(UI_desk.x+176,UI_desk.y+312,string(oxypc) + "%")
+draw_healthbar(UI_desk.x+64,UI_desk.y+318,UI_desk.x+144,UI_desk.y+334,round(oxypc),c_black,make_color_rgb(0, 51, 204),make_color_rgb(0, 51, 204),0,true,0)
+draw_text(UI_desk.x+160,UI_desk.y+312,string(oxypc) + "%")
 draw_sprite(spr_oxyicon,-1,UI_desk.x+16,UI_desk.y+310)
 if (oxypc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+310)
 
 elecpc = (global.electricity/100)*100
-draw_healthbar(UI_desk.x+64,UI_desk.y+350,UI_desk.x+160,UI_desk.y+366,elecpc,c_black,c_yellow,c_yellow,0,true,1)
-draw_text(UI_desk.x+176,UI_desk.y+344,string(elecpc) + "%")
+draw_healthbar(UI_desk.x+64,UI_desk.y+350,UI_desk.x+144,UI_desk.y+366,round(elecpc),c_black,c_yellow,c_yellow,0,true,0)
+draw_text(UI_desk.x+160,UI_desk.y+344,string(elecpc) + "%")
 draw_sprite(spr_electicon,-1,UI_desk.x+16,UI_desk.y+342)
 if (elecpc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+342)
 </string>

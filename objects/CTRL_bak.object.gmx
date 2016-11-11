@@ -3,64 +3,45 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1001</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="64">
+    <event eventtype="6" enumb="7">
       <action>
         <libid>1</libid>
-        <id>501</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_draw_sprite</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>5</kind>
-            <sprite>spr_attitude</sprite>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>672</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>-1</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>524</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_color</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>13</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>switch (action)
+{
+    case 0:
+    {
+    }
+    case 1:
+    {
+    }
+
+
+}
+</string>
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>526</id>
@@ -77,11 +58,11 @@
         <arguments>
           <argument>
             <kind>12</kind>
-            <font>font3</font>
+            <font>font4</font>
           </argument>
           <argument>
             <kind>4</kind>
-            <string>0</string>
+            <string>1</string>
           </argument>
         </arguments>
       </action>
@@ -101,8 +82,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(UI_attitude.x+8, UI_attitude.y+16, "ALT: "+string(round((lander.y/12*-1)+60))+" м" )
-draw_text(UI_attitude.x+8, UI_attitude.y+32, "SPD: "+string(round(lander.speed/1.5))+" м/c" )
+            <string>draw_set_colour (c_white)
+if (global.sas = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+464, 1, 1, 0, make_color_rgb(0, 102, 255), 1);
+else
+draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+464, 1, 1, 0, c_gray, 1)
+draw_text(UI_desk.x+44, UI_desk.y+466,"SAS")
+if (global.rcs = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+464, 1, 1, 0, make_color_rgb(0, 204, 0), 1);
+else
+draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+464, 1, 1, 0, c_gray, 1)
+draw_text(UI_desk.x+100, UI_desk.y+466,"RCS")
+if (global.gen = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+464, 1, 1, 0, make_color_rgb(255, 204, 0), 1);
+else
+draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+464, 1, 1, 0, c_gray, 1)
+draw_text(UI_desk.x+156, UI_desk.y+466,"GEN")
+if (global.ls = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+464, 1, 1, 0, make_color_rgb(204, 0, 0), 1);
+else
+draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+464, 1, 1, 0, c_gray, 1)
+draw_text(UI_desk.x+212, UI_desk.y+466,"CO2")
+if (global.ls = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, make_color_rgb(51, 204, 204), 1);
+else
+draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, c_gray, 1)
+draw_text(UI_desk.x+44, UI_desk.y+514,"LSS")
 </string>
           </argument>
         </arguments>

@@ -6,6 +6,7 @@
   <NewExtensions>
     <extension index="0">extensions\Essential Scripts</extension>
     <extension index="1">extensions\Custom Bar</extension>
+    <extension index="2">extensions\Memory DLL</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -72,10 +73,12 @@
       <object>objects\UI_attitude</object>
       <objects name="UI_controls">
         <object>objects\CTRL</object>
+        <object>objects\CTRL_bak</object>
         <object>objects\CTRL_SAS</object>
         <object>objects\CTRL_RCS</object>
         <object>objects\CTRL_GEN</object>
       </objects>
+      <object>objects\UI_DebugDisplay</object>
     </objects>
     <objects name="grp_PLBLobjects">
       <object>objects\lander</object>

@@ -82,11 +82,64 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.sas = 1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+32, UI_desk.y+464, 1, 1, 0, c_aqua, 1);
-else
-draw_sprite_ext(spr_button, -1, UI_desk.x+32, UI_desk.y+464, 1, 1, 0, c_gray, 1)
-draw_text(UI_desk.x+48, UI_desk.y+466,"SAS")
+            <string>rcs_state = make_color_rgb(0, 204, 0)
+lsco2_state = make_color_rgb(0, 204, 0)
+ls_state = make_color_rgb(0, 204, 0)
+gen_state = make_color_rgb(0, 204, 0)
+sas_state = make_color_rgb(0, 102, 255)
+eng_state = make_color_rgb(255, 102, 0)
+if(global.sasfail = 1)sas_state = make_color_rgb(204, 0, 0)
+if(global.rcsfail = 1)rcs_state = make_color_rgb(204, 0, 0)
+if(global.lsfail = 1)ls_state = make_color_rgb(204, 0, 0)
+if(global.genfail = 1)gen_state = make_color_rgb(204, 0, 0)
+if(global.lsco2fail = 1)lsco2_state = make_color_rgb(204, 0, 0)
+if(global.engfail = 1)eng_state = make_color_rgb(204, 0, 0)
+draw_set_colour (c_white)
+if (global.sas = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+464, 1, 1, 0, sas_state, 1);
+else{
+if (global.sasfail !=1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+464, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+464, 1, 1, 0, sas_state, 1);}
+draw_text(UI_desk.x+44, UI_desk.y+466,"SAS")
+if (global.rcs = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+464, 1, 1, 0, rcs_state, 1);
+else{
+if (global.rcsfail !=1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+464, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+464, 1, 1, 0, rcs_state, 1);;}
+draw_text(UI_desk.x+100, UI_desk.y+466,"RCS")
+if (global.gen = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+464, 1, 1, 0, gen_state, 1);
+else{
+if (global.genfail !=1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+464, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+464, 1, 1, 0, gen_state, 1);}
+draw_text(UI_desk.x+156, UI_desk.y+466,"GEN")
+if (global.lsco2 = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+464, 1, 1, 0, lsco2_state, 1);
+else{
+if (global.lsco2fail !=1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+464, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+464, 1, 1, 0, lsco2_state, 1);}
+draw_text(UI_desk.x+212, UI_desk.y+466,"CO2")
+if (global.ls = 1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, ls_state, 1);
+else{
+if (global.lsfail !=1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, ls_state, 1);}
+draw_text(UI_desk.x+44, UI_desk.y+514,"LSS")
+if (global.thrust &gt; 0)
+draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+512, 1, 1, 0, eng_state, 1);
+else{
+if (global.engfail !=1)
+draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+512, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, eng_state, 1);}
+draw_text(UI_desk.x+100, UI_desk.y+514,"ENG")
+
+
+
 </string>
           </argument>
         </arguments>
