@@ -38,6 +38,7 @@ clamp(global.electricity,0,100)
 global.sas = 1
 global.gen = 0
 global.rcs = 1
+global.comms = 1
 speed = 0
 thrust = 0
 //Создаём Part_system
@@ -81,6 +82,7 @@ global.rcsfail = 0
 global.lsfail = 0
 global.lsco2fail = 0
 global.engfail = 0
+global.commsfail = 1
 </string>
           </argument>
         </arguments>
@@ -169,14 +171,18 @@ global.engfail = 0
           }
        else
          {
-          if (global.sas = 0)
+          if (global.sas = 1)
              {
               rotation = 0
               image_angle +=3
               dir +=3
-              global.electricity -=0.01
+              global.electricity -=0.1
              }
-          else {rotation +=0.3; global.electricity -=0.01}                      
+          else 
+           {
+             rotation +=0.3; 
+             global.electricity -=0.01
+           }                      
          }
       }
       else
@@ -190,7 +196,7 @@ global.engfail = 0
        else
            {
             rotation +=0.25
-            global.electricity -=0.01
+            global.electricity -=0.1
            }
    }
 }
@@ -213,9 +219,9 @@ if (keyboard_check(ord('D')) &amp;&amp; global.fuel &gt; 0 &amp;&amp; global.ele
                 rotation = 0
                 image_angle -=3
                 dir -=3
-                global.electricity -=0.01
+                global.electricity -=0.1
                }
-            else {rotation -=0.3; global.electricity -=0.01}
+            else {rotation -=0.3; global.electricity -=0.1}
            }
       }
    else
@@ -311,7 +317,7 @@ if (keyboard_check_released(ord('E')))
      global.gen -= 1
     }
 if (global.gen &lt; 0) global.gen = 1
-if (global.gen = 1&amp;&amp; global.genfail !=1)
+if (global.gen = 1&amp;&amp; global.genfail !=1 &amp;&amp; global.fuel &gt; 0)
    {
     global.fuel -=0.05
     global.electricity += 0.05

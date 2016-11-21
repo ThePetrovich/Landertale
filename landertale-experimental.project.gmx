@@ -14,27 +14,28 @@
       <sprite>sprites\spr_button_idle</sprite>
       <sprite>sprites\spr_button_pressed</sprite>
       <sprite>sprites\spr_button_hover</sprite>
-      <sprite>sprites\spr_periapsis</sprite>
-      <sprite>sprites\spr_apoapsis</sprite>
-      <sprite>sprites\spr_ship_marker</sprite>
       <sprite>sprites\spr_menu_selector</sprite>
       <sprite>sprites\spr_settings_selector</sprite>
-      <sprite>sprites\spr_fuelicon</sprite>
       <sprite>sprites\spr_direction_hud</sprite>
       <sprites name="rus">
         <sprite>sprites\spr_maindesk_ru</sprite>
         <sprite>sprites\spr_thrust_slider</sprite>
       </sprites>
-      <sprites name="eng">
-        <sprite>sprites\spr_maindesk_eng</sprite>
-      </sprites>
-      <sprite>sprites\spr_oxyicon</sprite>
-      <sprite>sprites\spr_electicon</sprite>
-      <sprite>sprites\spr_warning</sprite>
       <sprite>sprites\spr_slider</sprite>
       <sprite>sprites\spr_attitude</sprite>
+      <sprite>sprites\spr_cpanel_left</sprite>
       <sprite>sprites\spr_button</sprite>
+      <sprite>sprites\spr_alarm</sprite>
       <sprite>sprites\spr_logo</sprite>
+      <sprite>sprites\spr_electicon</sprite>
+      <sprites name="spr_grp_icons">
+        <sprite>sprites\spr_periapsis</sprite>
+        <sprite>sprites\spr_apoapsis</sprite>
+        <sprite>sprites\spr_ship_marker</sprite>
+        <sprite>sprites\spr_fuelicon</sprite>
+        <sprite>sprites\spr_warning</sprite>
+        <sprite>sprites\spr_oxyicon</sprite>
+      </sprites>
     </sprites>
     <sprite>sprites\DEBUG</sprite>
     <sprites name="Game_objects">
@@ -54,11 +55,14 @@
     </scripts>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\MainMenu_font</font>
-    <font>fonts\Buttons_font</font>
-    <font>fonts\font1</font>
-    <font>fonts\font3</font>
-    <font>fonts\font4</font>
+    <fonts name="grp_fnt_legacy">
+      <font>fonts\MainMenu_font</font>
+      <font>fonts\Buttons_font</font>
+      <font>fonts\font3</font>
+      <font>fonts\font1</font>
+      <font>fonts\font4</font>
+    </fonts>
+    <font>fonts\fnt_desk_info</font>
   </fonts>
   <objects name="objects">
     <objects name="grp_UIelements">
@@ -74,9 +78,6 @@
       <objects name="UI_controls">
         <object>objects\CTRL</object>
         <object>objects\CTRL_bak</object>
-        <object>objects\CTRL_SAS</object>
-        <object>objects\CTRL_RCS</object>
-        <object>objects\CTRL_GEN</object>
       </objects>
       <object>objects\UI_DebugDisplay</object>
     </objects>

@@ -33,7 +33,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>372</string>
+            <string>420</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -89,7 +89,7 @@ if (sliderpos &gt; 224) sliderpos = 224
           </argument>
           <argument>
             <kind>0</kind>
-            <string>388</string>
+            <string>436</string>
           </argument>
           <argument>
             <kind>0</kind>

@@ -69,20 +69,6 @@ orbit_speed  = 10;
       </action>
       <action>
         <libid>1</libid>
-        <id>422</id>
-        <kind>1</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>524</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -117,125 +103,23 @@ orbit_speed  = 10;
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>20</string>
+            <string>32</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>40</string>
+            <string>48</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>236</string>
+            <string>224</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>220</string>
+            <string>200</string>
           </argument>
           <argument>
             <kind>4</kind>
             <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>524</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_color</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>13</kind>
-            <string>16744448</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>512</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_draw_ellipse</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>-1</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>96</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>96</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>160</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>160</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>524</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_color</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>13</kind>
-            <string>16744448</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_colour (c_white);
-draw_ellipse (UI_desk.x+64,UI_desk.y+64,UI_desk.x+192,UI_desk.y+192,true);
-globalvar apoapsiss, periapsiss;
-global.apoapsiss = 100;
-global.periapsiss = 100;
-
-</string>
           </argument>
         </arguments>
       </action>
@@ -320,7 +204,7 @@ global.periapsiss = 100;
         <arguments>
           <argument>
             <kind>2</kind>
-            <string>отключено</string>
+            <string>Disabled</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -348,94 +232,158 @@ global.periapsiss = 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>orbit_angle += orbit_speed;
-draw_sprite (spr_ship_marker, -1, x+896 + orbit_radius * cos(orbit_angle * pi / 360),y+128 - orbit_radius * sin(orbit_angle * pi / 360));
+            <string>fuelpc = (global.fuel/1000)*100
+if (fuelpc &lt;0) fuelpc = 0
+draw_healthbar(UI_desk.x+64,UI_desk.y+274,UI_desk.x+144,UI_desk.y+290,round(fuelpc),c_black,make_color_rgb(255, 102, 0),make_color_rgb(255, 102, 0),0,true,0)
+draw_sprite(spr_fuelicon,-1,UI_desk.x+16,UI_desk.y+266)
+draw_set_font(font1)
+draw_set_color(c_white)
+draw_set_valign(fa_top)
+draw_set_halign(fa_left)
+draw_text(UI_desk.x+160,UI_desk.y+268,string(fuelpc) + "%")
+if (fuelpc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+266)
+oxypc = (global.oxygen/500)*100
+draw_healthbar(UI_desk.x+64,UI_desk.y+306,UI_desk.x+144,UI_desk.y+322,round(oxypc),c_black,make_color_rgb(0, 51, 204),make_color_rgb(0, 51, 204),0,true,0)
+draw_text(UI_desk.x+160,UI_desk.y+300,string(oxypc) + "%")
+draw_sprite(spr_oxyicon,-1,UI_desk.x+16,UI_desk.y+298)
+if (oxypc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+298)
+
+elecpc = (global.electricity/100)*100
+draw_healthbar(UI_desk.x+64,UI_desk.y+338,UI_desk.x+144,UI_desk.y+354,round(elecpc),c_black,c_yellow,c_yellow,0,true,0)
+draw_text(UI_desk.x+160,UI_desk.y+332,string(elecpc) + "%")
+draw_sprite(spr_electicon,-1,UI_desk.x+16,UI_desk.y+330)
+if (elecpc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+330)
 </string>
           </argument>
         </arguments>
       </action>
       <action>
         <libid>1</libid>
-        <id>424</id>
-        <kind>2</kind>
+        <id>526</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>422</id>
-        <kind>1</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_font</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>fuelpc = (global.fuel/1000)*100
-if (fuelpc &lt;0) fuelpc = 0
-draw_healthbar(UI_desk.x+64,UI_desk.y+286,UI_desk.x+144,UI_desk.y+302,round(fuelpc),c_black,make_color_rgb(255, 102, 0),make_color_rgb(255, 102, 0),0,true,0)
-draw_sprite(spr_fuelicon,-1,UI_desk.x+16,UI_desk.y+278)
-draw_set_font(font1)
-draw_set_color(c_white)
-draw_set_valign(fa_top)
-draw_set_halign(fa_left)
-draw_text(UI_desk.x+160,UI_desk.y+280,string(fuelpc) + "%")
-if (fuelpc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+278)
-oxypc = (global.oxygen/500)*100
-draw_healthbar(UI_desk.x+64,UI_desk.y+318,UI_desk.x+144,UI_desk.y+334,round(oxypc),c_black,make_color_rgb(0, 51, 204),make_color_rgb(0, 51, 204),0,true,0)
-draw_text(UI_desk.x+160,UI_desk.y+312,string(oxypc) + "%")
-draw_sprite(spr_oxyicon,-1,UI_desk.x+16,UI_desk.y+310)
-if (oxypc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+310)
-
-elecpc = (global.electricity/100)*100
-draw_healthbar(UI_desk.x+64,UI_desk.y+350,UI_desk.x+144,UI_desk.y+366,round(elecpc),c_black,c_yellow,c_yellow,0,true,0)
-draw_text(UI_desk.x+160,UI_desk.y+344,string(elecpc) + "%")
-draw_sprite(spr_electicon,-1,UI_desk.x+16,UI_desk.y+342)
-if (elecpc &lt;20) draw_sprite(spr_warning,-1,UI_desk.x+16,UI_desk.y+342)
-</string>
+            <kind>12</kind>
+            <font>fnt_desk_info</font>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>1</string>
           </argument>
         </arguments>
       </action>
       <action>
         <libid>1</libid>
-        <id>424</id>
-        <kind>2</kind>
+        <id>524</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_color</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>13</kind>
+            <string>16777215</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>514</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_draw_text</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>2</kind>
+            <string>Resources</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>128</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>244</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>514</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_draw_text</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>2</kind>
+            <string>Map</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>128</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>20</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>514</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_draw_text</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>2</kind>
+            <string>Controls</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>128</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>400</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

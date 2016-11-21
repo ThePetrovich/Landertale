@@ -1,6 +1,6 @@
 ini_open ('settings.ini')
 global.soundEnabled = ini_read_real( 'settings', 'IsSoundEnabled', 1);
-global.fpsEnabled = ini_read_real( 'settings', 'IsFPSEnabled', 0);
+global.fpsEnabled = ini_read_real( 'settings', 'IsFPSEnabled', 1);
 ini_close();
 switch (selection)
 {
@@ -31,20 +31,20 @@ switch (selection)
     ini_open ('settings.ini')
     global.fpsEnabled = ini_read_real( 'settings', 'IsFPSEnabled', 0);
     ini_close();
-     if (global.fpsEnabled = 0)
+     if (global.fpsEnabled = 1)
      {
         ini_open ('settings.ini')
-        ini_write_real( 'settings', 'IsFPSEnabled', 1);
-        ini_write_string ("settings", "FPSSetting", "Кадры в секунду: ВКЛ")
-        menu[2] = "Кадры в секунду: ВКЛ"
+        ini_write_real( 'settings', 'IsFPSEnabled', 0);
+        ini_write_string ("settings", "FPSSetting", "Отладочная информация: ВКЛ")
+        menu[2] = "Отладочная информация: ВКЛ"
         ini_close();
      }
     else
      {
         ini_open ('settings.ini')
-        ini_write_real( 'settings', 'IsFPSEnabled', 0);
-        ini_write_string ("settings", "FPSSetting", "Кадры в секунду: ВЫКЛ")
-        menu[2] = "Кадры в секунду: ВЫКЛ"
+        ini_write_real( 'settings', 'IsFPSEnabled', 1);
+        ini_write_string ("settings", "FPSSetting", "Отладочная информация: ВЫКЛ")
+        menu[2] = "Отладочная информация: ВЫКЛ"
         ini_close();
      }
      }
