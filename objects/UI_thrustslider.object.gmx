@@ -19,7 +19,7 @@
         <exetype>1</exetype>
         <functionname>action_draw_sprite</functionname>
         <codestring></codestring>
-        <whoName>UI_desk</whoName>
+        <whoName>&lt;undefined&gt;</whoName>
         <relative>-1</relative>
         <isnot>0</isnot>
         <arguments>
@@ -75,7 +75,7 @@ if (sliderpos &gt; 224) sliderpos = 224
         <exetype>1</exetype>
         <functionname>action_draw_sprite</functionname>
         <codestring></codestring>
-        <whoName>UI_desk</whoName>
+        <whoName>&lt;undefined&gt;</whoName>
         <relative>-1</relative>
         <isnot>0</isnot>
         <arguments>

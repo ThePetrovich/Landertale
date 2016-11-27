@@ -54,6 +54,7 @@ part_type_life(shipeffects,1,2)
 part_type_blend(shipeffects,0)
 shipengine_main = part_type_create();
 part_type_shape(shipengine_main, pt_shape_pixel);
+shipengine_emit = part_emitter_create(shipeffects);
 rotation = 0
 
 </string>
@@ -260,8 +261,6 @@ if (keyboard_check(ord('X')))
 image_angle += rotation
 dir += rotation
 motion_add (dir, thrust*0.01)
-image_angle += rotation
-dir += rotation
 global.fuel -= 0.01*thrust
 global.oxygen -= 0.01
 global.electricity -=0.001
@@ -269,7 +268,6 @@ if (global.fuel &lt; 0) thrust = 0
 if (global.oxygen &lt; 0) global.oxygen = 0
 if (global.electricity &lt; 0) global.electricity = 0
 //Рисуем пламя двигателя
-shipengine_emit = part_emitter_create(shipeffects);
 part_emitter_region(shipeffects, shipengine_emit,lander.x+1,lander.x+1,lander.y,lander.y,ps_shape_ellipse,ps_distr_gaussian)
 part_emitter_burst(shipeffects, shipengine_emit, shipengine_main, thrust*0.5)
 </string>

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.fpsEnabled = 1)
+            <string>/*if(global.fpsEnabled = 1)
 show_debug_overlay(true);
 else show_debug_overlay(false);
 </string>
