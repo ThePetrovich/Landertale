@@ -7,6 +7,7 @@
     <extension index="0">extensions\Essential Scripts</extension>
     <extension index="1">extensions\Custom Bar</extension>
     <extension index="2">extensions\Memory DLL</extension>
+    <extension index="3">extensions\Developer Console</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -17,11 +18,9 @@
       <sprite>sprites\spr_menu_selector</sprite>
       <sprite>sprites\spr_settings_selector</sprite>
       <sprite>sprites\spr_direction_hud</sprite>
-      <sprites name="rus">
-        <sprite>sprites\spr_maindesk_ru</sprite>
-        <sprite>sprites\spr_thrust_slider</sprite>
-      </sprites>
       <sprite>sprites\spr_slider</sprite>
+      <sprite>sprites\spr_thrust_slider</sprite>
+      <sprite>sprites\spr_maindesk</sprite>
       <sprite>sprites\spr_attitude</sprite>
       <sprite>sprites\spr_cpanel_left</sprite>
       <sprite>sprites\spr_button</sprite>
@@ -36,22 +35,38 @@
         <sprite>sprites\spr_warning</sprite>
         <sprite>sprites\spr_oxyicon</sprite>
       </sprites>
+      <sprite>sprites\spr_connection_state</sprite>
     </sprites>
     <sprite>sprites\DEBUG</sprite>
     <sprites name="Game_objects">
       <sprite>sprites\spr_lander_idle</sprite>
-      <sprite>sprites\sprite21</sprite>
+      <sprite>sprites\spr_saturn5</sprite>
     </sprites>
     <sprite>sprites\sprite20</sprite>
   </sprites>
-  <backgrounds name="background">
-    <background>background\background0</background>
-  </backgrounds>
+  <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="grp_scr_menu">
       <script>scripts\scr_settingsmenu.gml</script>
       <script>scripts\scr_mainmenu.gml</script>
+    </scripts>
+    <scripts name="Console">
+      <script>scripts\console_create.gml</script>
+      <script>scripts\console_settings.gml</script>
+      <script>scripts\console_draw.gml</script>
+      <script>scripts\console_toggle.gml</script>
+      <script>scripts\console_submit.gml</script>
+      <script>scripts\console_cmd.gml</script>
+      <script>scripts\console_get_cmd.gml</script>
+      <script>scripts\console_value.gml</script>
+      <script>scripts\console_text_open.gml</script>
+      <script>scripts\console_add.gml</script>
+      <script>scripts\console_destroy.gml</script>
+      <script>scripts\console_preset.gml</script>
+      <script>scripts\console_value_count.gml</script>
+      <script>scripts\console_preset_new.gml</script>
+      <script>scripts\console_submit_new.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -63,6 +78,7 @@
       <font>fonts\font4</font>
     </fonts>
     <font>fonts\fnt_desk_info</font>
+    <font>fonts\fnt_console</font>
   </fonts>
   <objects name="objects">
     <objects name="grp_UIelements">
@@ -80,6 +96,7 @@
         <object>objects\CTRL_bak</object>
       </objects>
       <object>objects\UI_DebugDisplay</object>
+      <object>objects\obj_console</object>
     </objects>
     <objects name="grp_PLBLobjects">
       <object>objects\lander</object>

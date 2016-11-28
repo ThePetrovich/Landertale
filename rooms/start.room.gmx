@@ -52,9 +52,7 @@
   </views>
   <instances>
     <instance objName="lander" x="320" y="320" name="inst_CAC1AFD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="UI_thrustslider" x="32" y="192" name="inst_9C9668E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="UI_attitude" x="672" y="0" name="inst_EBF00F02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="CTRL" x="32" y="0" name="inst_195D88BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_roomborder" x="0" y="-32" name="inst_ED479408" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_roomborder" x="256" y="-32" name="inst_2A492F07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_roomborder" x="512" y="-32" name="inst_9278EA18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -74,6 +72,7 @@
     <instance objName="obj_roomborder" x="-64" y="672" name="inst_3E26E03E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_roomborder" x="-64" y="928" name="inst_7767D131" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="UI_desk" x="768" y="0" name="inst_12B6E14E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_console" x="0" y="0" name="inst_4B4F3EB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

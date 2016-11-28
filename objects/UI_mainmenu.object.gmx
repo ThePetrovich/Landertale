@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>globalvar thrust, direct, fuel, oxygen, hp, electricity, orbit, state, windowstate, fpsEnabled, soundEnabled;
+            <string>globalvar thrust, fuel, oxygen, electricity, state, fpsEnabled, soundEnabled;
 global.fpsEnabled = 1
 global.soundEnabled = 0
 </string>
