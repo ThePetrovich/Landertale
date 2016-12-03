@@ -26,8 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>globalvar thrust, fuel, oxygen, electricity, state, fpsEnabled, soundEnabled;
-global.fpsEnabled = 1
-global.soundEnabled = 0
+ini_open('settings.ini')
+{
+global.soundEnabled = ini_read_real("settings","IsSoundEnabled",0)
+global.fpsEnabled = ini_read_real("settings","IsFpsEnabled",1)
+}
 </string>
           </argument>
         </arguments>
@@ -48,10 +51,10 @@ global.soundEnabled = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu[0] = 'Играть';
-menu[1] = 'Управление';
-menu[2] = 'Настройки';
-menu[3] = 'Выход';
+            <string>menu[0] = 'Start';
+menu[1] = 'Controls';
+menu[2] = 'Settings';
+menu[3] = 'Quit';
 space = 48;
 selection = 0;
 

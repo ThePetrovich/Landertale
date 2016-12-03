@@ -13,16 +13,16 @@ switch (selection)
      {
         ini_open ('settings.ini')
         ini_write_real( 'settings', 'IsSoundEnabled', 0);
-        ini_write_string ("settings", "SoundSetting", "Звук: ВЫКЛ")
-        menu[0] = "Звук: ВЫКЛ"
+        ini_write_string ("settings", "SoundSetting", "Sound: OFF")
+        menu[0] = "Sound: OFF"
         ini_close();
      }
      else
      {
         ini_open ('settings.ini')
         ini_write_real( 'settings', 'IsSoundEnabled', 1);
-        ini_write_string ("settings", "SoundSetting", "Звук: ВКЛ")
-        menu[0] = "Звук: ВКЛ"
+        ini_write_string ("settings", "SoundSetting", "Sound: ON")
+        menu[0] = "Sound: ON"
         ini_close();
      }
     }
@@ -35,24 +35,24 @@ switch (selection)
      {
         ini_open ('settings.ini')
         ini_write_real( 'settings', 'IsFPSEnabled', 0);
-        ini_write_string ("settings", "FPSSetting", "Отладочная информация: ВКЛ")
-        menu[2] = "Отладочная информация: ВКЛ"
+        ini_write_string ("settings", "FPSSetting", "Console: ON")
+        menu[2] = "Console: ON"
+        instance_create(0,0,obj_console)
         ini_close();
      }
     else
      {
         ini_open ('settings.ini')
         ini_write_real( 'settings', 'IsFPSEnabled', 1);
-        ini_write_string ("settings", "FPSSetting", "Отладочная информация: ВЫКЛ")
-        menu[2] = "Отладочная информация: ВЫКЛ"
+        ini_write_string ("settings", "FPSSetting", "Console: OFF")
+        menu[2] = "Console: OFF"
+        with(obj_console) instance_destroy();
         ini_close();
      }
      }
     case 3: {return 0;}
-    case 4: {return 0;}
-    case 5:
-    {
+    case 4: {
     room_goto(mainmenu)
-    }
+    return 0;}
 }
 

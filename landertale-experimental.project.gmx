@@ -41,10 +41,17 @@
     <sprites name="Game_objects">
       <sprite>sprites\spr_lander_idle</sprite>
       <sprite>sprites\spr_saturn5</sprite>
+      <sprite>sprites\spr_trainingmach</sprite>
+      <sprite>sprites\spr_trainingmach_high</sprite>
+      <sprite>sprites\spr_doorback</sprite>
+      <sprite>sprites\spr_doornext</sprite>
+      <sprite>sprites\sprite30</sprite>
     </sprites>
     <sprite>sprites\sprite20</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="grp_scr_menu">
@@ -79,6 +86,7 @@
     </fonts>
     <font>fonts\fnt_desk_info</font>
     <font>fonts\fnt_console</font>
+    <font>fonts\fnt_train_info</font>
   </fonts>
   <objects name="objects">
     <objects name="grp_UIelements">
@@ -97,6 +105,7 @@
       </objects>
       <object>objects\UI_DebugDisplay</object>
       <object>objects\obj_console</object>
+      <object>objects\UI_training_info</object>
     </objects>
     <objects name="grp_PLBLobjects">
       <object>objects\lander</object>
@@ -104,16 +113,24 @@
     </objects>
     <object>objects\obj_roomborder</object>
     <object>objects\obj_logo</object>
+    <objects name="grp_LVLobjects">
+      <objects name="grp_TRNGobjects">
+        <object>objects\obj_trainmach</object>
+        <object>objects\obj_doornext</object>
+        <object>objects\obj_doorback</object>
+        <object>objects\obj_shadowthingy</object>
+      </objects>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <rooms name="menu_main">
+    <rooms name="grp_room_menu">
       <room>rooms\mainmenu</room>
       <room>rooms\settings</room>
       <room>rooms\controls</room>
     </rooms>
     <rooms name="grp_room_level">
       <room>rooms\start</room>
-      <room>rooms\room4</room>
+      <room>rooms\training_flight</room>
     </rooms>
   </rooms>
   <help>
