@@ -35,24 +35,46 @@ switch (selection)
      {
         ini_open ('settings.ini')
         ini_write_real( 'settings', 'IsFPSEnabled', 0);
-        ini_write_string ("settings", "FPSSetting", "Console: ON")
-        menu[2] = "Console: ON"
-        instance_create(0,0,obj_console)
+        ini_write_string ("settings", "FPSSetting", "Console: OFF")
+        menu[2] = "Console: OFF"
+        with(obj_console) instance_destroy();
         ini_close();
      }
     else
      {
         ini_open ('settings.ini')
         ini_write_real( 'settings', 'IsFPSEnabled', 1);
-        ini_write_string ("settings", "FPSSetting", "Console: OFF")
-        menu[2] = "Console: OFF"
-        with(obj_console) instance_destroy();
+        ini_write_string ("settings", "FPSSetting", "Console: ON")
+        menu[2] = "Console: ON"
         ini_close();
      }
+     break;
      }
-    case 3: {return 0;}
+    case 3: {{
+    ini_open ('settings.ini')
+    global.ParticlesEnabled = ini_read_real( 'settings', 'IsPartEnabled', 1);
+    ini_close();
+     if (global.ParticlesEnabled = 1)
+     {
+        ini_open ('settings.ini')
+        ini_write_real( 'settings', 'IsPartEnabled', 0);
+        ini_write_string ("settings", "ParticleSetting", "Particles: OFF")
+        menu[3] = "Particles: OFF"
+        ini_close();
+     }
+     else
+     {
+        ini_open ('settings.ini')
+        ini_write_real( 'settings', 'IsPartEnabled', 1);
+        ini_write_string ("settings", "ParticleSetting", "Particles: ON")
+        menu[3] = "Particles: ON"
+        ini_close();
+     }
+     return 0;
+     break;
+    }}
     case 4: {
-    room_goto(mainmenu)
+    room_goto_transition(mainmenu,0,30,c_black,true)
     return 0;}
 }
 

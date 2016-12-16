@@ -8,6 +8,93 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>menu[0] = 'Flight basics';
+menu[1] = 'Landing &amp; lift off (WIP)';
+menu[2] = 'Launching from the Earth (WIP)';
+menu[3] = 'Basic orbiting (WIP)';
+space = 48;
+selection = 0;
+selectormove = 0;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>window = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var selectormove = 0;
+selectormove -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")),0);
+selectormove += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")),0);
+
+if (selectormove!= 0)
+{
+    selection += selectormove;
+    if (selection &lt; 0) selection = array_length_1d(menu) - 1;
+    if (selection &gt; array_length_1d(menu) - 1) selection = 0;    
+}
+
+var buttonpress;
+buttonpress = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), 0)
+if (buttonpress == 1 &amp;&amp; window = true) scr_trainingmenu();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -69,24 +156,99 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> draw_sprite(spr_trainingmach,0,obj_trainmach.x,obj_trainmach.y)
-var hasEntered = false;
-
-if position_meeting(mouse_x,mouse_y,self){
+            <string>if (position_meeting(mouse_x,mouse_y,self) &amp;&amp; window = false){
     hasEntered = true;
     draw_text(obj_trainmach.x+256,obj_trainmach.y+64,"Training")
     draw_line_colour(obj_trainmach.x+256,obj_trainmach.y+256,obj_trainmach.x+256,obj_trainmach.y+76,c_black,c_black)
-    draw_sprite(spr_trainingmach_high,0,obj_trainmach.x,obj_trainmach.y)
     draw_set_halign(fa_left)
     draw_set_color(c_orange)
     draw_text(224,32,"Flight simulator")
     draw_set_color(c_white)
     draw_text(224,64,"You can learn how to fly here.")
-    
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite(spr_trainingmach,0,obj_trainmach.x,obj_trainmach.y)
+var hasEntered = false;
+if (position_meeting(mouse_x,mouse_y,self) &amp;&amp; window = false){
+    hasEntered = true;
+    draw_sprite(spr_trainingmach_high,0,obj_trainmach.x,obj_trainmach.y);
 }
 
-if (!position_meeting(mouse_x,mouse_y,self) &amp;&amp; hasEntered){
+if (!position_meeting(mouse_x,mouse_y,self) &amp;&amp; hasEntered &amp;&amp; window = false){
  draw_sprite(spr_trainingmach,0,obj_trainmach.x,obj_trainmach.y)
+}
+if (mouse_check_button_released(mb_left)&amp;&amp;position_meeting(mouse_x,mouse_y,self))
+{
+window = true
+}
+if (window = true)
+{
+draw_set_color(make_colour_rgb(192,192,192))
+draw_rectangle(64,64,960,656,false);
+draw_set_color(make_colour_rgb(32,32,32))
+draw_rectangle(72,72,952,648,false);
+instance_deactivate_all(true)
+if(!instance_exists(UI_button_close))
+{
+instance_create(912,80,UI_button_close);
+}
+instance_activate_object(obj_shadowthingy)
+instance_activate_object(sys_transition)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (window)
+{
+draw_set_halign(fa_left);
+draw_set_valign(fa_middle);
+draw_set_font(MainMenu_font);
+draw_set_color(c_white);
+
+var m;
+for (m = 0; m &lt; array_length_1d(menu); m+=1)
+{
+    draw_text(x + space, y + (m*space), string(menu[m]));
+}
+draw_sprite (spr_settings_selector,0, x+32, y + selection * space);
 }
 </string>
           </argument>

@@ -25,12 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>globalvar thrust, fuel, oxygen, electricity, state, fpsEnabled, soundEnabled;
+            <string>application_surface_enable(true)
+globalvar thrust, fuel, oxygen, electricity, state, fpsEnabled, soundEnabled,ParticlesEnabled;
 ini_open('settings.ini')
 {
 global.soundEnabled = ini_read_real("settings","IsSoundEnabled",0)
 global.fpsEnabled = ini_read_real("settings","IsFpsEnabled",1)
+global.ParticlesEnabled = ini_read_real("settings","IsPartEnabled",1)
 }
+if(global.fpsEnabled = 1 &amp;&amp; !instance_exists(obj_console)) instance_create(0,0,obj_console)
 </string>
           </argument>
         </arguments>

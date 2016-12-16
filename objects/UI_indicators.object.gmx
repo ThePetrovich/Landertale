@@ -8,39 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="6" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>switch (action)
-{
-    case 0:
-    {
-    }
-    case 1:
-    {
-    }
-
-
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -101,60 +68,60 @@ if(global.engfail = 1)eng_state = make_color_rgb(204, 0, 0)
 if(global.commsfail = 1)comms_state = make_color_rgb(204, 0, 0)
 //SAS
 if (global.sas = 1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+464, 1, 1, 0, sas_state, 1);
+draw_sprite_ext(spr_button, -1, 768+28, 0+464, 1, 1, 0, sas_state, 1);
 else{
 if (global.sasfail !=1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+464, 1, 1, 0, c_gray, 1)
-else draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+464, 1, 1, 0, sas_state, 1);}
-draw_text(UI_desk.x+44, UI_desk.y+466,"SAS")
+draw_sprite_ext(spr_button, -1, 768+28, 0+464, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, 768+28, 0+464, 1, 1, 0, sas_state, 1);}
+draw_text(768+44, 0+466,"SAS")
 if (global.rcs = 1)
 //RCS
-draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+512, 1, 1, 0, rcs_state, 1);
+draw_sprite_ext(spr_button, -1, 768+84, 0+512, 1, 1, 0, rcs_state, 1);
 else{
 if (global.rcsfail !=1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+512, 1, 1, 0, c_gray, 1)
-else draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+512, 1, 1, 0, rcs_state, 1);;}
-draw_text(UI_desk.x+100, UI_desk.y+514,"RCS")
+draw_sprite_ext(spr_button, -1, 768+84, 0+512, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, 768+84, 0+512, 1, 1, 0, rcs_state, 1);;}
+draw_text(768+100, 0+514,"RCS")
 //Generator
 if (global.gen = 1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+464, 1, 1, 0, gen_state, 1);
+draw_sprite_ext(spr_button, -1, 768+140, 0+464, 1, 1, 0, gen_state, 1);
 else{
 if (global.genfail !=1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+464, 1, 1, 0, c_gray, 1)
-else draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+464, 1, 1, 0, gen_state, 1);}
-draw_text(UI_desk.x+156, UI_desk.y+466,"GEN")
+draw_sprite_ext(spr_button, -1, 768+140, 0+464, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, 768+140, 0+464, 1, 1, 0, gen_state, 1);}
+draw_text(768+156, 0+466,"GEN")
 //CO2 scrubber
 if (global.lsco2 = 1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+464, 1, 1, 0, lsco2_state, 1);
+draw_sprite_ext(spr_button, -1, 768+196, 0+464, 1, 1, 0, lsco2_state, 1);
 else{
 if (global.lsco2fail !=1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+464, 1, 1, 0, c_gray, 1)
-else draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+464, 1, 1, 0, lsco2_state, 1);}
-draw_text(UI_desk.x+212, UI_desk.y+466,"CO2")
+draw_sprite_ext(spr_button, -1, 768+196, 0+464, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, 768+196, 0+464, 1, 1, 0, lsco2_state, 1);}
+draw_text(768+212, 0+466,"CO2")
 //Life support
 if (global.ls = 1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, ls_state, 1);
+draw_sprite_ext(spr_button, -1, 768+28, 0+512, 1, 1, 0, ls_state, 1);
 else{
 if (global.lsfail !=1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, c_gray, 1)
-else draw_sprite_ext(spr_button, -1, UI_desk.x+28, UI_desk.y+512, 1, 1, 0, ls_state, 1);}
-draw_text(UI_desk.x+44, UI_desk.y+514,"LSS")
+draw_sprite_ext(spr_button, -1, 768+28, 0+512, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, 768+28, 0+512, 1, 1, 0, ls_state, 1);}
+draw_text(768+44, 0+514,"LSS")
 //Engines
 if (global.thrust &gt; 0)
-draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+464, 1, 1, 0, eng_state, 1);
+draw_sprite_ext(spr_button, -1, 768+84, 0+464, 1, 1, 0, eng_state, 1);
 else{
 if (global.engfail !=1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+464, 1, 1, 0, c_gray, 1)
-else draw_sprite_ext(spr_button, -1, UI_desk.x+84, UI_desk.y+464, 1, 1, 0, eng_state, 1);}
-draw_text(UI_desk.x+100, UI_desk.y+466,"ENG")
+draw_sprite_ext(spr_button, -1, 768+84, 0+464, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, 768+84, 0+464, 1, 1, 0, eng_state, 1);}
+draw_text(768+100, 0+466,"ENG")
 //Communications
 if (global.comms &gt; 0)
-draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+512, 1, 1, 0, comms_state, 1);
+draw_sprite_ext(spr_button, -1, 768+140, 0+512, 1, 1, 0, comms_state, 1);
 else{
 if (global.commsfail !=1)
-draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+512, 1, 1, 0, c_gray, 1)
-else draw_sprite_ext(spr_button, -1, UI_desk.x+140, UI_desk.y+512, 1, 1, 0, comms_state, 1);}
-draw_text(UI_desk.x+156, UI_desk.y+514,"COM")
+draw_sprite_ext(spr_button, -1, 768+140, 0+512, 1, 1, 0, c_gray, 1)
+else draw_sprite_ext(spr_button, -1, 768+140, 0+512, 1, 1, 0, comms_state, 1);}
+draw_text(768+156, 0+514,"COM")
 
 </string>
           </argument>
@@ -178,10 +145,10 @@ draw_text(UI_desk.x+156, UI_desk.y+514,"COM")
             <kind>1</kind>
             <string>//Master alarm
 if (global.engfail = 1 || global.lsfail = 1 || global.lsco2fail = 1 || global.genfail = 1 || UI_desk.oxypc &lt; 20 || UI_desk.fuelpc &lt; 20 || UI_desk.elecpc &lt; 20)
-draw_sprite(spr_alarm, -1, UI_desk.x+196, UI_desk.y+512);
+draw_sprite(spr_alarm, -1, 768+196, 0+512);
 else{
-draw_sprite_ext(spr_button, -1, UI_desk.x+196, UI_desk.y+512, 1, 1, 0, c_gray, 1)}
-draw_text(UI_desk.x+212, UI_desk.y+514,"WRN")
+draw_sprite_ext(spr_button, -1, 768+196, 0+512, 1, 1, 0, c_gray, 1)}
+draw_text(768+212, 0+514,"WRN")
 </string>
           </argument>
         </arguments>

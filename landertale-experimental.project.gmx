@@ -8,15 +8,18 @@
     <extension index="1">extensions\Custom Bar</extension>
     <extension index="2">extensions\Memory DLL</extension>
     <extension index="3">extensions\Developer Console</extension>
+    <extension index="4">extensions\Transition System</extension>
+    <extension index="5">extensions\Block Lighting 2D</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprites name="UI">
+    <sprites name="grp_spr_UI">
       <sprite>sprites\spr_button_idle</sprite>
       <sprite>sprites\spr_button_pressed</sprite>
       <sprite>sprites\spr_button_hover</sprite>
       <sprite>sprites\spr_menu_selector</sprite>
       <sprite>sprites\spr_settings_selector</sprite>
+      <sprite>sprites\spr_training_selector</sprite>
       <sprite>sprites\spr_direction_hud</sprite>
       <sprite>sprites\spr_slider</sprite>
       <sprite>sprites\spr_thrust_slider</sprite>
@@ -25,8 +28,8 @@
       <sprite>sprites\spr_cpanel_left</sprite>
       <sprite>sprites\spr_button</sprite>
       <sprite>sprites\spr_alarm</sprite>
+      <sprite>sprites\spr_controls</sprite>
       <sprite>sprites\spr_logo</sprite>
-      <sprite>sprites\spr_electicon</sprite>
       <sprites name="spr_grp_icons">
         <sprite>sprites\spr_periapsis</sprite>
         <sprite>sprites\spr_apoapsis</sprite>
@@ -34,31 +37,41 @@
         <sprite>sprites\spr_fuelicon</sprite>
         <sprite>sprites\spr_warning</sprite>
         <sprite>sprites\spr_oxyicon</sprite>
+        <sprite>sprites\spr_connection_state</sprite>
+        <sprite>sprites\spr_electicon</sprite>
       </sprites>
-      <sprite>sprites\spr_connection_state</sprite>
+      <sprite>sprites\spr_ui_close</sprite>
+      <sprite>sprites\crap</sprite>
     </sprites>
     <sprite>sprites\DEBUG</sprite>
-    <sprites name="Game_objects">
+    <sprites name="grp_spr_lvlobj">
       <sprite>sprites\spr_lander_idle</sprite>
       <sprite>sprites\spr_saturn5</sprite>
       <sprite>sprites\spr_trainingmach</sprite>
+      <sprite>sprites\spr_border</sprite>
       <sprite>sprites\spr_trainingmach_high</sprite>
       <sprite>sprites\spr_doorback</sprite>
       <sprite>sprites\spr_doornext</sprite>
       <sprite>sprites\sprite30</sprite>
+      <sprite>sprites\part_fire</sprite>
+      <sprite>sprites\spr_regolith_upper</sprite>
+      <sprite>sprites\spr_regolith_lower</sprite>
+      <sprite>sprites\spr_regolith_lower1</sprite>
     </sprites>
-    <sprite>sprites\sprite20</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
+    <background>background\bkg_training_1</background>
+    <background>background\bkg_main</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="grp_scr_menu">
       <script>scripts\scr_settingsmenu.gml</script>
       <script>scripts\scr_mainmenu.gml</script>
+      <script>scripts\scr_pausemenu.gml</script>
+      <script>scripts\scr_trainingmenu.gml</script>
     </scripts>
-    <scripts name="Console">
+    <scripts name="grp_scr_console">
       <script>scripts\console_create.gml</script>
       <script>scripts\console_settings.gml</script>
       <script>scripts\console_draw.gml</script>
@@ -72,10 +85,31 @@
       <script>scripts\console_destroy.gml</script>
       <script>scripts\console_preset.gml</script>
       <script>scripts\console_value_count.gml</script>
-      <script>scripts\console_preset_new.gml</script>
-      <script>scripts\console_submit_new.gml</script>
+    </scripts>
+    <scripts name="grp_scr_transitions">
+      <script>scripts\room_goto_transition.gml</script>
+    </scripts>
+    <scripts name="grp_scr_physics (DISABLED)">
+      <script>scripts\stick_to_angle.gml</script>
+      <script>scripts\stick_to.gml</script>
+    </scripts>
+    <scripts name="2D Block Lighting">
+      <script>scripts\bl_init.gml</script>
+      <script>scripts\bl_rectangle_create.gml</script>
+      <script>scripts\bl_rectangle_destroy.gml</script>
+      <script>scripts\bl_rectangle_draw.gml</script>
+      <script>scripts\bl_rectangle_update.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shaders name="2D Block Lighting">
+      <shader type="GLSLES">shaders\sh_bl_blur_x.shader</shader>
+      <shader type="GLSLES">shaders\sh_bl_blur_y.shader</shader>
+      <shader type="GLSLES">shaders\sh_bl_remove_edge.shader</shader>
+      <shader type="GLSLES">shaders\sh_bl_bicubic.shader</shader>
+      <shader type="GLSLES">shaders\sh_bl_draw.shader</shader>
+    </shaders>
+  </shaders>
   <fonts name="fonts">
     <fonts name="grp_fnt_legacy">
       <font>fonts\MainMenu_font</font>
@@ -84,42 +118,59 @@
       <font>fonts\font1</font>
       <font>fonts\font4</font>
     </fonts>
-    <font>fonts\fnt_desk_info</font>
-    <font>fonts\fnt_console</font>
-    <font>fonts\fnt_train_info</font>
+    <fonts name="grp_fnt_UI">
+      <font>fonts\fnt_desk_info</font>
+      <font>fonts\fnt_train_info</font>
+      <font>fonts\fnt_header</font>
+      <font>fonts\fnt_console</font>
+    </fonts>
   </fonts>
   <objects name="objects">
-    <objects name="grp_UIelements">
-      <object>objects\button_exit</object>
-      <object>objects\button_start</object>
+    <objects name="grp_obj_UI">
       <object>objects\UI_desk</object>
       <object>objects\UI_mainmenu</object>
+      <object>objects\UI_pause</object>
+      <object>objects\UI_training_select</object>
       <object>objects\UI_settings</object>
       <object>objects\UI_shipmarker</object>
-      <object>objects\UI_flighthud_nav</object>
-      <object>objects\UI_thrustslider</object>
-      <object>objects\UI_attitude</object>
-      <objects name="UI_controls">
-        <object>objects\CTRL</object>
-        <object>objects\CTRL_bak</object>
-      </objects>
-      <object>objects\UI_DebugDisplay</object>
-      <object>objects\obj_console</object>
+      <object>objects\UI_flighthud</object>
       <object>objects\UI_training_info</object>
+      <object>objects\UI_controls</object>
+      <object>objects\UI_DebugDisplay</object>
+      <object>objects\UI_attitude</object>
+      <object>objects\UI_button_close</object>
+      <objects name="grp_UI_desk">
+        <object>objects\UI_thrustslider</object>
+        <object>objects\UI_indicators</object>
+      </objects>
+      <objects name="grp_UI_misc">
+        <object>objects\obj_console</object>
+        <object>objects\obj_init</object>
+        <object>objects\sys_transition</object>
+      </objects>
     </objects>
-    <objects name="grp_PLBLobjects">
+    <objects name="grp_obj_playable">
       <object>objects\lander</object>
       <object>objects\saturn5</object>
     </objects>
-    <object>objects\obj_roomborder</object>
-    <object>objects\obj_logo</object>
-    <objects name="grp_LVLobjects">
-      <objects name="grp_TRNGobjects">
+    <objects name="grp_obj_lvl">
+      <objects name="grp_obj_training">
         <object>objects\obj_trainmach</object>
         <object>objects\obj_doornext</object>
         <object>objects\obj_doorback</object>
         <object>objects\obj_shadowthingy</object>
       </objects>
+      <object>objects\obj_regolith_upper</object>
+      <object>objects\obj_regolith_lower</object>
+      <object>objects\obj_regolith_lower1</object>
+    </objects>
+    <objects name="grp_obj_misc">
+      <object>objects\obj_test_controller</object>
+      <object>objects\obj_roomborder</object>
+      <object>objects\obj_logo</object>
+    </objects>
+    <objects name="2D Block Lighting">
+      <object>objects\obj_bl_rectangle</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -128,7 +179,7 @@
       <room>rooms\settings</room>
       <room>rooms\controls</room>
     </rooms>
-    <rooms name="grp_room_level">
+    <rooms name="grp_room_training">
       <room>rooms\start</room>
       <room>rooms\training_flight</room>
     </rooms>

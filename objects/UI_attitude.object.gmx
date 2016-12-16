@@ -101,8 +101,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(UI_attitude.x+8, UI_attitude.y+16, "ALT: "+string(round((lander.y/12*-1)+60))+" м" )
-draw_text(UI_attitude.x+8, UI_attitude.y+32, "SPD: "+string(round(lander.speed/1.5))+" м/c" )
+            <string>draw_text(672+8, 0+16, "ALT: "+string(round((lander.y/10*-1)+(room_height/10)))+" m" )
+draw_text(672+8, 0+32, "SPD: "+string(round(lander.speed/2))+" m/s" )
 </string>
           </argument>
         </arguments>

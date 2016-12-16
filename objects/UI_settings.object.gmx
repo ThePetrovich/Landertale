@@ -29,7 +29,7 @@
 menu[0] = ini_read_string ("settings", "SoundSetting", "Sound: OFF")
 menu[1] = 'Language: ENGLISH (WIP, locked)';
 menu[2] =  ini_read_string ("settings", "FPSSetting", "Console: ON")
-menu[3] = 'Particles: ON (WIP, locked)'
+menu[3] = ini_read_string ("settings", "ParticleSetting", "Particles: ON")
 menu[4] = 'Back';
 space = 48;
 selection = 0;
