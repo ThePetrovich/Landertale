@@ -92,7 +92,6 @@ console_preset(my_console);
 * commands to the suggestions
 * list.
 *****************************/
-console_add(my_console,"example this command doesn't do anything.");
 </string>
           </argument>
         </arguments>
@@ -253,33 +252,33 @@ console_destroy(my_console);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*****************************
-* If a command has been submitted...
-*****************************/
-if console_submit(my_console) {
-
-    /*****************************
-    * Here we can put all our commands.
-    *****************************/
-    
-    /*****************************
-    * If user enters into the console:
-    * show_message "message"
-    *****************************/
+            <string>if console_submit(my_console) 
+{
     if console_cmd(my_console,"show_message") {
-    
-        /*****************************
-        * Get the message value to display
-        *****************************/
         msg = console_value(my_console,1);
-        
-        /*****************************
-        * Show message
-        *****************************/
         show_message(msg);
-    
-    }
-
+        }
+    if console_cmd(my_console,"setfuel") {
+        global.fuel = console_value(my_console,1);
+        }
+    if console_cmd(my_console,"setoxygen") {
+        global.oxygen = console_value(my_console,1);
+        }
+    if console_cmd(my_console,"setelectricity") {
+        global.electricity = console_value(my_console,1);
+        }
+    if console_cmd(my_console,"instance_create") {
+        xx = console_value(my_console,1);
+        yy = console_value(my_console,2);
+        instance = console_value(my_console,3);
+        instance_create(xx,yy,instance);
+        }
+    if console_cmd(my_console,"drawdebug") {
+        show_debug_overlay(console_value(my_console,1));
+        }
+    if console_cmd(my_console,"changeroom") {
+        room_goto(console_value(my_console,1));
+        }
 }
 </string>
           </argument>

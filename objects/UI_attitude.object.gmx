@@ -101,8 +101,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(672+8, 0+16, "ALT: "+string(round((lander.y/10*-1)+(room_height/10)))+" m" )
-draw_text(672+8, 0+32, "SPD: "+string(round(lander.speed/2))+" m/s" )
+            <string>var heading = round(lander.phy_rotation);
+if (heading &gt; 360) heading -=360;
+if (heading &lt; 360) heading +=360;
+draw_text(672+8, 0+16, "ALT: "+string(round((lander.y/10*-1)+(room_height/10)))+" m" );
+draw_text(672+8, 0+32, "SPD: "+string(round(lander.phy_speed))+" m/s" );
+draw_text(672+8, 0+48, "HDG: "+string(heading)+"" );
 </string>
           </argument>
         </arguments>

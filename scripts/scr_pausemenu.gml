@@ -5,22 +5,25 @@ switch (selection)
         with UI_pause instance_destroy();
         instance_activate_all();
         break;
-    }
-    case 1:
+    }case 1:
     {
-        
-        instance_create(view_xview[0],view_yview[0],UI_controls)
-        with UI_pause instance_destroy()
+        instance_create(view_xview[0]+256, view_yview[0]+180,UI_confirm_restart);
         break;
     }
     case 2:
     {
-        room_goto_transition(mainmenu,0,room_speed,c_black,true);
+        
+        instance_create(view_xview[0],view_yview[0],UI_controls)
         break;
     }
     case 3:
     {
-        game_end();
+        instance_create(view_xview[0]+256, view_yview[0]+180,UI_confirm_mainmenu);
+        break;
+    }
+    case 4:
+    {
+        instance_create(view_xview[0]+256, view_yview[0]+180,UI_confirm_quit);
         break;
     }
     

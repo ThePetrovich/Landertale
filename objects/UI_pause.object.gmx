@@ -3,7 +3,7 @@
   <spriteName>spr_menu_selector</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-99998</depth>
+  <depth>-99997</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,14 +26,42 @@
           <argument>
             <kind>1</kind>
             <string>menu[0] = 'Resume';
-menu[1] = 'Controls';
-menu[2] = 'Main menu';
-menu[3] = 'Quit';
+menu[1] = 'Restart'
+menu[2] = 'Controls';
+menu[3] = 'Main menu';
+menu[4] = 'Quit';
 space = 48;
 selection = 0;
 instance_deactivate_all(true);
-
+globalvar restartConfirmation;
+global.restartConfirmation = false;
+globalvar mainmenuConfirmation;
+global.mainmenuConfirmation = false;
+globalvar controlsOpen;
+global.controlsOpen = false;
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -55,7 +83,8 @@ instance_deactivate_all(true);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var selectormove = 0;
+            <string>if (!global.restartConfirmation &amp;&amp; !global.quitConfirmation &amp;&amp; !global.mainmenuConfirmation &amp;&amp; !global.controlsOpen){
+var selectormove = 0;
 selectormove -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")),0);
 selectormove += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")),0);
 
@@ -69,6 +98,33 @@ if (selectormove!= 0)
 var buttonpress;
 buttonpress = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), 0)
 if (buttonpress == 1) scr_pausemenu();
+}
+else global.restartConfirmation = true
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (apeshit1 == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.mainmenuConfirmation = false;
+if (apeshit == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.quitConfirmation = false;
+if (apeshit2 == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.restartConfirmation = false;
+if (apeshit4 == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.controlsOpen = false;
+
 </string>
           </argument>
         </arguments>

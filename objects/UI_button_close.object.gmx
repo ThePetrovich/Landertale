@@ -3,7 +3,7 @@
   <spriteName>spr_ui_close</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100000</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,9 +27,9 @@
             <kind>1</kind>
             <string>if(obj_trainmach.window = true)
 {
-obj_trainmach.window = false
-with UI_button_close instance_destroy()
-instance_activate_all()
+obj_trainmach.window = false;
+instance_activate_all();
+with UI_button_close instance_destroy();
 }
 </string>
           </argument>

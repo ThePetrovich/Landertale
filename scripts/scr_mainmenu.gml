@@ -17,8 +17,13 @@ switch (selection)
     }
     case 3:
     {
-        game_end();
+        instance_create(view_xview[0]+256, view_yview[0]+180,UI_about);
         break;
     }
-    
+    case 4:
+    {
+        instance_create(view_xview[0]+256, view_yview[0]+180,UI_confirm_quit);
+        break;
+    }
+
 }

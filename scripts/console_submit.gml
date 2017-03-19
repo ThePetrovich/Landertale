@@ -157,23 +157,13 @@ if console[? "active"] {
         if console[? "preset"] {
             switch(c[0]) {
                 case "quit": game_end(); break;
-                case "setmax": 
-                    global.fuel = 1000;
-                    global.oxygen = 500;
-                    global.electricity = 100
-                break;
                 case "room_restart": room_restart(); break;
                 case "room_speed": 
                     if no = 1 then room_speed = real(c[1]); 
                 break;
                 case "audio_stop_all": audio_stop_all(); break;
                 case "screenshot": 
-                    if no = 1 then background_save(c[? "bg"], c[1]); 
-                break;
-                case "drawdebug": 
-                     if no = 1 then
-                    show_debug_overlay(true); 
-                      else show_debug_overlay(false); 
+                    if no =  1 then background_save(c[? "bg"], c[1]); 
                 break;
             }
         }

@@ -25,15 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>application_surface_enable(true)
+            <string>application_surface_enable(true);
 globalvar thrust, fuel, oxygen, electricity, state, fpsEnabled, soundEnabled,ParticlesEnabled;
 ini_open('settings.ini')
 {
-global.soundEnabled = ini_read_real("settings","IsSoundEnabled",0)
-global.fpsEnabled = ini_read_real("settings","IsFpsEnabled",1)
-global.ParticlesEnabled = ini_read_real("settings","IsPartEnabled",1)
+global.soundEnabled = ini_read_real("settings","IsSoundEnabled",0);
+global.fpsEnabled = ini_read_real("settings","IsFpsEnabled",0);
+global.ParticlesEnabled = ini_read_real("settings","IsPartEnabled",1);
 }
-if(global.fpsEnabled = 1 &amp;&amp; !instance_exists(obj_console)) instance_create(0,0,obj_console)
+if(global.fpsEnabled = 1 &amp;&amp; !instance_exists(obj_console)) instance_create(0,0,obj_console);
+globalvar quitConfirmation;
+global.quitConfirmation = false;
+globalvar menuAboutOpen;
+global.menuAboutOpen = false;
+globalvar apeshit;
+global.apeshit = 0;
+globalvar apeshit1;
+global.apeshit1 = 0;
+globalvar apeshit2;
+global.apeshit2 = 0;
+globalvar apeshit3;
+global.apeshit3 = 0;
+globalvar apeshit4;
+global.apeshit4 = 0;
+if (!instance_exists(obj_console)) instance_create(0,0,obj_console);
 </string>
           </argument>
         </arguments>
@@ -57,7 +72,8 @@ if(global.fpsEnabled = 1 &amp;&amp; !instance_exists(obj_console)) instance_crea
             <string>menu[0] = 'Start';
 menu[1] = 'Controls';
 menu[2] = 'Settings';
-menu[3] = 'Quit';
+menu[3] = 'About';
+menu[4] = 'Quit';
 space = 48;
 selection = 0;
 
@@ -83,7 +99,9 @@ selection = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var selectormove = 0;
+            <string>if (!global.quitConfirmation &amp;&amp; !global.menuWarnOpen &amp;&amp; !global.menuAboutOpen)
+{
+var selectormove = 0;
 selectormove -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")),0);
 selectormove += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")),0);
 
@@ -91,12 +109,36 @@ if (selectormove!= 0)
 {
     selection += selectormove;
     if (selection &lt; 0) selection = array_length_1d(menu) - 1;
-    if (selection &gt; array_length_1d(menu) - 1) selection = 0;    
+    if (selection &gt; array_length_1d(menu) - 1) selection = 0;
 }
 
 var buttonpress;
 buttonpress = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), 0)
 if (buttonpress == 1) scr_mainmenu();
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (apeshit == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.quitConfirmation = false;
+if (apeshit3 == 0) global.menuAboutOpen = false;
 </string>
           </argument>
         </arguments>

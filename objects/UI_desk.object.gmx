@@ -508,7 +508,7 @@ if (elecpc &lt;20) draw_sprite(spr_warning,-1,768+16,0+330)
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string>1</string>
           </argument>
         </arguments>
       </action>
