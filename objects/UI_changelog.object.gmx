@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-99998</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,11 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu[0] = 'Ok';
-menu[1] = 'Cancel';
-global.quitConfirmation = true;
-selection = 0;
-global.apeshit = 1;
+            <string>r_str = "Connecting to the server...";
+var file;
+get = http_get("http://landertale.ddns.net/changelog.txt");
+
 </string>
           </argument>
         </arguments>
@@ -52,13 +51,12 @@ global.apeshit = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.apeshit = 0;
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
+    <event eventtype="7" enumb="62">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -75,7 +73,18 @@ global.apeshit = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_menu_selection(scr_quit_confirmation,1);
+            <string>if ds_map_find_value(async_load, "id") == get
+   {
+   if ds_map_find_value(async_load, "status") == 0
+      {
+      r_str = ds_map_find_value(async_load, "result");
+      }
+   else
+      {
+      r_str = "Connection to the server failed";
+      }
+   }
+
 </string>
           </argument>
         </arguments>
@@ -98,8 +107,27 @@ global.apeshit = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_window_question(view_xview[0]+256,view_yview[0]+128,512,192,"Quit?","Do you really want to quit?","OK","Cancel",selection);
+            <string>draw_rectangle_color(608,32,960,352,make_color_rgb(192,192,192),make_color_rgb(192,192,192),make_color_rgb(192,192,192),make_color_rgb(192,192,192),false);
+draw_rectangle_color(608+8,32+8,960-8,352-8,make_color_rgb(32,32,32),make_color_rgb(32,32,32),make_color_rgb(32,32,32),make_color_rgb(32,32,32),false);
+draw_set_font(fnt_train_info);
+draw_set_color(c_green);
+draw_set_valign(fa_middle);
+draw_set_halign(fa_left);
+draw_text(608+32,32+32,"Changelog");
+draw_set_font(fnt_dialog_main);
+draw_set_color(c_white);
+draw_set_valign(fa_top);
+mainText1 = scr_linebreak(r_str,(352-32)/14,99);
+draw_text(608+32,32+48,mainText1);
+if (r_str == "Connecting to the server...")
+{
+    draw_sprite(spr_loading_spinner,-1,912,104);
+}
+if (r_str == "Connection to the server failed")
+{
+    draw_sprite(spr_fail,-1,912,104);
+}
+
 </string>
           </argument>
         </arguments>

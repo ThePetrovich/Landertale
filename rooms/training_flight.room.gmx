@@ -711,7 +711,6 @@
     <instance objName="obj_regolith_lower1" x="2016" y="4064" name="inst_DB6F14F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="lander" x="1056" y="3648" name="inst_5008B5EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="UI_thrustslider" x="768" y="0" name="inst_D7433E1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_console" x="-32" y="-32" name="inst_97CF6511" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>-1</PhysicsWorld>

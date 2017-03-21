@@ -56,20 +56,7 @@ selection = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var selectormove = 0;
-selectormove -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")),0);
-selectormove += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")),0);
-
-if (selectormove!= 0)
-{
-    selection += selectormove;
-    if (selection &lt; 0) selection = array_length_1d(menu) - 1;
-    if (selection &gt; array_length_1d(menu) - 1) selection = 0;    
-}
-
-var buttonpress;
-buttonpress = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), 0)
-if (buttonpress == 1) scr_settingsmenu();
+            <string>scr_menu_selection(scr_settingsmenu,0);
 </string>
           </argument>
         </arguments>

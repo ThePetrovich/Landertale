@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-99998</depth>
+  <depth>-99999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,11 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu[0] = 'Ok';
-menu[1] = 'Cancel';
-global.quitConfirmation = true;
+            <string>selection = 0;
+file1 = file_text_open_read(working_directory + "\version");
+get1 = http_get("http://landertale.ddns.net/version");
 selection = 0;
-global.apeshit = 1;
+global.updateConfirmation = false;
+global.apeshit5 = 0;
+ver = file_text_read_string(file1);
+file_text_close(file1);
+u_str = ver;
+
 </string>
           </argument>
         </arguments>
@@ -52,13 +57,13 @@ global.apeshit = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.apeshit = 0;
+            <string>global.apeshit5 = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -75,7 +80,41 @@ global.apeshit = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_menu_selection(scr_quit_confirmation,1);
+            <string>if (!global.quitConfirmation &amp;&amp; !global.menuWarnOpen &amp;&amp; !instance_exists(UI_betaWarning) &amp;&amp; u_str &gt; ver) {scr_menu_selection(scr_update_confirmation,1);}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="62">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if ds_map_find_value(async_load, "id") == get1
+   {
+   if ds_map_find_value(async_load, "status") == 0
+      {
+      u_str = ds_map_find_value(async_load, "result");
+      }
+   }
+   else u_str = ver;
+if (u_str &gt; ver) {
+global.updateConfirmation = true;
+global.apeshit5 = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -98,8 +137,8 @@ global.apeshit = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_window_question(view_xview[0]+256,view_yview[0]+128,512,192,"Quit?","Do you really want to quit?","OK","Cancel",selection);
+            <string>if (!global.quitConfirmation &amp;&amp; !global.menuWarnOpen &amp;&amp; u_str &gt; ver)
+draw_window_question(256,128,512,224,"Update available","An update available. You can download it at http://landertale.ddns.net# Would you like to update now?","OK","Cancel",selection);
 </string>
           </argument>
         </arguments>

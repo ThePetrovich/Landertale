@@ -48,7 +48,10 @@ globalvar apeshit3;
 global.apeshit3 = 0;
 globalvar apeshit4;
 global.apeshit4 = 0;
-if (!instance_exists(obj_console)) instance_create(0,0,obj_console);
+globalvar apeshit5;
+global.apeshit5 = 0;
+if (global.fpsEnabled == 1)instance_deactivate_object(obj_console);
+else instance_activate_object(obj_console);
 </string>
           </argument>
         </arguments>
@@ -99,22 +102,9 @@ selection = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!global.quitConfirmation &amp;&amp; !global.menuWarnOpen &amp;&amp; !global.menuAboutOpen)
+            <string>if (!global.quitConfirmation &amp;&amp; !global.menuWarnOpen &amp;&amp; !global.menuAboutOpen &amp;&amp; !global.updateConfirmation)
 {
-var selectormove = 0;
-selectormove -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")),0);
-selectormove += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")),0);
-
-if (selectormove!= 0)
-{
-    selection += selectormove;
-    if (selection &lt; 0) selection = array_length_1d(menu) - 1;
-    if (selection &gt; array_length_1d(menu) - 1) selection = 0;
-}
-
-var buttonpress;
-buttonpress = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), 0)
-if (buttonpress == 1) scr_mainmenu();
+scr_menu_selection("scr_mainmenu",0);
 }
 
 </string>
@@ -139,6 +129,7 @@ if (buttonpress == 1) scr_mainmenu();
             <kind>1</kind>
             <string>if (apeshit == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.quitConfirmation = false;
 if (apeshit3 == 0) global.menuAboutOpen = false;
+if (apeshit5 == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.updateConfirmation = false;
 </string>
           </argument>
         </arguments>
