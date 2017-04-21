@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>r_str = "Connecting to the server...";
 var file;
-get = http_get("http://landertale.ddns.net/changelog.txt");
+get = http_get("http://landertale.ddns.net:80/changelog.txt");
 
 </string>
           </argument>

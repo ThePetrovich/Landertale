@@ -129,7 +129,7 @@ scr_menu_selection("scr_mainmenu",0);
             <kind>1</kind>
             <string>if (apeshit == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.quitConfirmation = false;
 if (apeshit3 == 0) global.menuAboutOpen = false;
-if (apeshit5 == 0 &amp;&amp; keyboard_check_released(vk_anykey)) global.updateConfirmation = false;
+if (apeshit5 == 0) global.updateConfirmation = false;
 </string>
           </argument>
         </arguments>

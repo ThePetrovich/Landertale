@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>selection = 0;
 file1 = file_text_open_read(working_directory + "\version");
-get1 = http_get("http://landertale.ddns.net/version");
+get1 = http_get("http://landertale.ddns.net:80/version");
 selection = 0;
 global.updateConfirmation = false;
 global.apeshit5 = 0;
